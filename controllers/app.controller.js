@@ -120,7 +120,14 @@ function getAll(req, res) {
         if (err) {
             res.sendStatus(403);
         } else {
-            models.Product.findAll().then(result => {
+            models.Product.findAll({
+                    order: ['price']
+                }, {
+                    limit: 3,
+                    offset: 0,
+                }
+
+            ).then(result => {
                 res.status(200).json(result)
             }).catch(error => {
                 res.status(500).json({
