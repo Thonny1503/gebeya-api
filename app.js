@@ -24,13 +24,13 @@ const options = {
             version: '1.0.0'
         },
     },
-
     apis: ['./routes/Routes.js']
-
 };
 
 const swaggerSpec = swaggerDoc(options);
 
 app.use(bodyParser.json());
+
+//url to documentation
 app.use('/api-documentation', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 app.use("/", routes);
